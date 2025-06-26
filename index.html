@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Burnt Sienna Clone</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #F5E8C7;
+            color: #333;
+        }
+        header {
+            background-color: #803c24;
+            padding: 10px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            flex-wrap: wrap;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+        nav ul li {
+            margin: 0 15px;
+        }
+        nav ul li a {
+            color: #F5E8C7;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .logo-container {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .logo {
+            height: 100px;
+            width: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .logo img {
+            max-height: 100%;
+            max-width: 100%;
+        }
+        .hero {
+            background-color: #FFFFFF;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #000;
+            text-align: center;
+            position: relative;
+        }
+        .hero-text {
+            font-family: 'Georgia', serif;
+            font-size: 2.5em;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+        }
+        .hero-button {
+            padding: 10px 20px;
+            background-color: #803c24;
+            color: #F5E8C7;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        .hero-button:hover {
+            background-color: #6a3120;
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        .divider {
+            width: 100%;
+            height: 2px;
+            background-color: #803c24;
+            margin: 20px 0;
+        }
+        .intro {
+            display: flex;
+            padding: 50px 20px;
+            background-color: #F5E8C7;
+            max-width: 2000px;
+            margin: 0 auto;
+        }
+        .intro-left, .intro-right {
+            width: 50%;
+            padding: 0 10px;
+        }
+        .intro-title {
+            font-family: 'Georgia', serif;
+            font-size: 2em;
+            margin-bottom: 20px;
+            color: #000;
+        }
+        .intro-image {
+            width: 100%;
+            height: 0;
+            padding-bottom: 87.1%; /* Maintains 871/1000 aspect ratio */
+            background-color: #FFFFFF;
+            background-image: url('https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&h=871&q=80');
+            background-size: cover;
+            background-position: center;
+            margin-bottom: 20px;
+            border-radius: 8px;
+        }
+        .intro-subheading {
+            font-family: 'Georgia', serif;
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #000;
+        }
+        .intro-content {
+            font-family: 'Arial', sans-serif;
+            font-size: 1em;
+            line-height: 1.5;
+            color: #000;
+        }
+        .idea {
+            display: flex;
+            padding: 50px 20px;
+            background-color: #F5E8C7;
+            max-width: 2000px;
+            margin: 0 auto;
+        }
+        .idea-left {
+            width: 50%;
+            padding-right: 10px;
+        }
+        .idea-right {
+            width: 50%;
+            padding-left: 10px;
+        }
+        .idea-title {
+            font-family: 'Georgia', serif;
+            font-size: 2em;
+            margin-bottom: 20px;
+            color: #000;
+        }
+        .idea-image {
+            width: 100%;
+            height: 0;
+            padding-bottom: 137.5%; /* Maintains 1100/800 aspect ratio */
+            background-color: #FFFFFF;
+            background-image: url('https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&h=1100&q=80');
+            background-size: cover;
+            background-position: center;
+            margin-bottom: 20px;
+            border-radius: 8px;
+        }
+        .idea-content {
+            font-family: 'Arial', sans-serif;
+            font-size: 1em;
+            line-height: 1.5;
+            color: #000;
+        }
+        .gallery {
+            padding: 50px 20px;
+            background-color: #F5E8C7;
+            text-align: center;
+        }
+        .gallery-title {
+            font-family: 'Georgia', serif;
+            font-size: 2em;
+            margin-bottom: 20px;
+            color: #000;
+        }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .gallery-image {
+            width: 100%;
+            height: 0;
+            padding-bottom: 100%; /* Square placeholders */
+            background-size: cover;
+            background-position: center;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        .gallery-image:hover {
+            transform: scale(1.05);
+        }
+        .contact {
+            display: flex;
+            padding: 50px 20px;
+            background-color: #F5E8C7;
+            max-width: 2000px;
+            margin: 0 auto;
+        }
+        .contact-left, .contact-right {
+            width: 50%;
+            padding: 0 10px;
+        }
+        .contact-title {
+            font-family: 'Georgia', serif;
+            font-size: 2em;
+            margin-bottom: 20px;
+            color: #000;
+        }
+        .contact-content {
+            font-family: 'Arial', sans-serif;
+            font-size: 1em;
+            line-height: 1.5;
+            color: #000;
+        }
+        .contact-details {
+            font-family: 'Arial', sans-serif;
+            font-size: 1em;
+            color: #000;
+        }
+        .contact-details div {
+            margin-bottom: 10px;
+        }
+        .contact-details a {
+            color: #803c24;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .contact-details a:hover {
+            color: #6a3120;
+            text-decoration: underline;
+        }
+        .contact-details .divider {
+            width: 100%;
+            height: 1px;
+            background-color: #000;
+            margin: 5px 0;
+        }
+        .whatido {
+            display: flex;
+            padding: 50px 20px;
+            background-color: #F5E8C7;
+            max-width: 2000px;
+            margin: 0 auto;
+        }
+        .whatido-left, .whatido-right {
+            width: 50%;
+            padding: 0 10px;
+        }
+        .whatido-title {
+            font-family: 'Georgia', serif;
+            font-size: 2em;
+            margin-bottom: 20px;
+            color: #000;
+        }
+        .whatido-content {
+            font-family: 'Arial', sans-serif;
+            font-size: 1em;
+            line-height: 1.5;
+            color: #000;
+        }
+        details {
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+        summary {
+            font-weight: bold;
+            cursor: pointer;
+            list-style: none; /* Remove default triangle */
+            position: relative;
+            padding: 10px 0;
+            transition: all 0.3s ease;
+        }
+        summary:hover {
+            color: #803c24;
+        }
+        summary::after {
+            content: '▷'; /* Right-pointing triangle */
+            position: absolute;
+            right: 0;
+            transition: transform 0.3s ease;
+        }
+        details[open] summary::after {
+            content: '▼'; /* Downward triangle when open */
+            transform: rotate(0deg);
+        }
+        .collapsible-content {
+            transition: all 0.3s ease-in-out;
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+        }
+        details[open] .collapsible-content {
+            max-height: 1000px;
+            opacity: 1;
+            padding: 10px 0;
+        }
+        .collapsible-divider {
+            width: 100%;
+            height: 1px;
+            background-color: #000;
+            margin: 10px 0;
+        }
+        footer {
+            background-color: #803c24;
+            color: #F5E8C7;
+            padding: 20px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 2000px;
+            margin: 0 auto;
+        }
+        .footer-social {
+            display: flex;
+            gap: 15px;
+            padding-left: 20px;
+        }
+        .footer-social a {
+            color: #F5E8C7;
+            text-decoration: none;
+            font-size: 20px;
+            transition: transform 0.3s ease;
+        }
+        .footer-social a:hover {
+            transform: translateY(-3px);
+        }
+        .footer-copyright {
+            padding-right: 20px;
+        }
+        /* Responsive Design */
+        @media (max-width: 900px) {
+            .logo-container {
+                position: static;
+                transform: none;
+                order: 1;
+                width: 100%;
+                text-align: center;
+                margin: 10px 0;
+            }
+            header {
+                flex-direction: column;
+            }
+            nav {
+                width: 100%;
+            }
+            nav ul {
+                justify-content: center;
+            }
+        }
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            nav ul li {
+                margin: 10px 0;
+            }
+            .hero-text {
+                font-size: 1.8em;
+                padding: 0 20px;
+            }
+            .hero-buttons {
+                flex-direction: column;
+                gap: 10px;
+            }
+            .intro, .idea, .contact, .whatido {
+                flex-direction: column;
+                text-align: center;
+            }
+            .intro-left, .intro-right, .idea-left, .idea-right, .contact-left, .contact-right, .whatido-left, .whatido-right {
+                width: 100%;
+                padding: 0;
+            }
+            .intro-image, .idea-image {
+                padding-bottom: 87.1%; /* Maintain aspect ratio on mobile */
+            }
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .gallery-image {
+                padding-bottom: 100%; /* Maintain square aspect ratio on mobile */
+            }
+            .contact-details .divider {
+                margin: 5px 0;
+            }
+            footer {
+                flex-direction: column;
+                gap: 10px;
+            }
+            .footer-social, .footer-copyright {
+                padding: 0;
+            }
+        }
+        @media (max-width: 480px) {
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+            .hero-text {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About <span style="font-size: 0.7em;">▼</span></a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="logo-container">
+            <div class="logo">
+                <img src="https://images.placeholders.dev/?width=300&height=100&text=Burnt+Sienna+Logo&bgColor=%23803c24&textColor=%23f5e8c7" alt="Burnt Sienna Logo">
+            </div>
+        </div>
+    </header>
+    <section id="home" class="hero">
+        <div class="hero-text">
+            I'm Jahir, a 21 years old self taught artist<br>based in Goa, India.
+        </div>
+        <div class="hero-buttons">
+            <a href="#canvas" class="hero-button">Canvas Painting</a>
+            <a href="#fabric" class="hero-button">Fabric Painting</a>
+        </div>
+    </section>
+    <div class="divider"></div>
+    <section class="intro">
+        <div class="intro-left">
+            <div class="intro-title">Introduction</div>
+            <div class="intro-image"></div>
+        </div>
+        <div class="intro-right">
+            <div class="intro-subheading">
+                I am a passionate young artist who paints on canvas and clothes. I am also the founder and host of 'La Velata'.
+            </div>
+            <div class="intro-content">
+                La Velata is an interactive, entertaining and insightful fabric painting workshop, held on Sundays at 'The Southern Deck'. La Velata aims to provide the guests and attendees with the opportunity to paint with their friends & families, meet new people, create bonds and share ideas while enjoying the beautiful view of the beach and sunset, while enjoying the top notch food and hospitality of 'The Southern Deck - Beach Bar and Bistro'
+            </div>
+        </div>
+    </section>
+    <div class="divider"></div>
+    <section class="idea">
+        <div class="idea-left">
+            <div class="idea-title">The idea behind La Velata</div>
+            <div class="idea-content">
+                The idea behind La Velata is not to stress you about creating better art or to complete with one and other but to explore and identify your own self. By providing you with basic information and basic art materials, La Velata will guide and assist you in recreating and painting a reflection of your emotions, ideas or beliefs on a material that stays close to you, so that you can wear or display it proudly.
+            </div>
+        </div>
+        <div class="idea-right">
+            <div class="idea-image"></div>
+        </div>
+    </section>
+    <div class="divider"></div>
+    <section class="gallery">
+        <div class="gallery-title">My work</div>
+        <div class="gallery-grid">
+            <div class="gallery-image" style="background-image: url('https://images.unsplash.com/photo-1579783900882-c0d3dad065b7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&h=500&q=80')"></div>
+            <div class="gallery-image" style="background-image: url('https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&h=500&q=80')"></div>
+            <div class="gallery-image" style="background-image: url('https://images.unsplash.com/photo-1531913764164-f85c52e6e654?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&h=500&q=80')"></div>
+            <div class="gallery-image" style="background-image: url('https://images.unsplash.com/photo-1578301978018-f55a1da0b9e8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&h=500&q=80')"></div>
+            <div class="gallery-image" style="background-image: url('https://images.unsplash.com/photo-1579783928621-7a13d66a62d1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&h=500&q=80')"></div>
+            <div class="gallery-image" style="background-image: url('https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&h=500&q=80')"></div>
+            <div class="gallery-image" style="background-image: url('https://images.unsplash.com/photo-1579783928462-37e1ca3a49b2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&h=500&q=80')"></div>
+            <div class="gallery-image" style="background-image: url('https://images.unsplash.com/photo-1579783901586-d88db74b4fe4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&h=500&q=80')"></div>
+        </div>
+    </section>
+    <div class="divider"></div>
+    <section class="contact">
+        <div class="contact-left">
+            <div class="contact-title">Contact</div>
+            <div class="contact-content">
+                You can engage with me anytime. I am looking forward to get connected with you and work for you with all my heart. Thank you!
+            </div>
+        </div>
+        <div class="contact-right">
+            <div class="contact-details">
+                <div><strong>Contact me to discuss your painting as well as to attend the La Velata, fabric painting workshop</strong></div>
+                <div class="divider"></div>
+                <div><a href="https://www.instagram.com/burntsienna.in/" target="_blank">⨀ Burnt sienna.in</a></div>
+                <div><a href="mailto:jahirkhan3karts@gmail.com">✉ jahirkhan3karts@gmail.com</a></div>
+                <div class="divider"></div>
+                <div><a href="https://www.instagram.com/la_velata" target="_blank">⨀ la_velataa</a></div>
+                <div><a href="mailto:lavelataworkshop@gmail.com">✉ lavelataworkshop@gmail.com</a></div>
+                <div class="divider"></div>
+                <div><a href="https://www.youtube.com/@jahirkhan7189" target="_blank">⨀ Artzbyjahirr</a></div>
+                <div><a href="mailto:artzbyjahir@gmail.com">✉ artzbyjahir@gmail.com</a></div>
+            </div>
+        </div>
+    </section>
+    <div class="divider"></div>
+    <section class="whatido">
+        <div class="whatido-left">
+            <div class="whatido-title">What I do</div>
+            <div class="whatido-content">
+                Whether you are looking for a traditional portrait painting or cool customized drip, I will bring your vision to life.
+            </div>
+        </div>
+        <div class="whatido-right">
+            <div class="collapsible-divider"></div>
+            <details>
+                <summary>Canvas painting</summary>
+                <div class="collapsible-content">
+                    <p>I craft canvas paintings deeply inspired by emotions, back story and philosophy. Using bold colors and intricate details, I aim to evoke personal interpretations, making each piece an unique experience for the viewers.</p>
+                </div>
+            </details>
+            <div class="collapsible-divider"></div>
+            <details>
+                <summary>Fabric Painting</summary>
+                <div class="collapsible-content">
+                    <p>I transfer your favorite hoodie, jacket or baggy jeans into one – of a kind art. I hand paint intricate designs that resonate with your personality and style, creating functional art you can wear and display.</p>
+                </div>
+            </details>
+            <div class="collapsible-divider"></div>
+            <details>
+                <summary>La Velata</summary>
+                <div class="collapsible-content">
+                    <p>I plan and host a very entertaining, interactive and insightful art workshops, guiding the attendees to paint on fabric or any other material, along with their friends and families creating beautiful memories that they can lock into their chest for lifetime.</p>
+                </div>
+            </details>
+            <div class="collapsible-divider"></div>
+        </div>
+    </section>
+    <div class="divider"></div>
+    <footer>
+        <div class="footer-social">
+            <a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.youtube.com" target="_blank"><i class="fab fa-youtube"></i></a>
+            <a href="mailto:" target="_blank"><i class="fas fa-envelope"></i></a>
+        </div>
+        <div class="footer-copyright">
+            Copyright © 2025 Jahir Khan
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Fix for collapsible menu animation on first click
+        document.querySelectorAll('details').forEach(detail => {
+            detail.addEventListener('click', function() {
+                // Force reflow to trigger transition
+                this.style.overflow = 'hidden';
+                void this.offsetHeight;
+            });
+        });
+    </script>
+</body>
+</html>
