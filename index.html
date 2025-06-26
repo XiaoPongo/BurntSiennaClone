@@ -13,33 +13,19 @@
             background-color: #F5E8C7;
             color: #333;
         }
+        
+        /* Header/Navbar Styles */
         header {
             background-color: #803c24;
-            padding: 10px 0;
+            padding: 10px 20px;
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            justify-content: space-between;
             position: relative;
-            flex-wrap: wrap;
+            height: 120px; /* accommodate logo height */
         }
-        nav ul {
-            list-style: none;
-            display: flex;
-            margin: 0;
-            padding: 0;
-        }
-        nav ul li {
-            margin: 0 15px;
-        }
-        nav ul li a {
-            color: #F5E8C7;
-            text-decoration: none;
-            font-weight: bold;
-            transition: color 0.3s ease;
-        }
-        nav ul li a:hover {
-            color: #f0d8b0;
-        }
+        
+        /* Logo styles */
         .logo-container {
             position: absolute;
             left: 50%;
@@ -52,24 +38,51 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background-color: #803c24;
-            padding: 5px;
-            box-sizing: border-box;
         }
         .logo img {
-            height: 90px;
+            height: 100%;
             width: auto;
-            max-width: 290px;
+            max-width: 100%;
             object-fit: contain;
         }
+        
+        /* Nav styles */
+        nav {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            padding: 0;
+            margin: 0;
+            gap: 30px;
+        }
+        nav ul li a {
+            color: #F5E8C7;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+        nav ul li a:hover {
+            color: #f0d8b0;
+        }
+        
+        /* Hamburger icon for small screens */
         .hamburger {
             display: none;
-            cursor: pointer;
             color: #F5E8C7;
-            font-size: 24px;
-            padding: 10px;
+            font-size: 28px;
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            right: 20px;
+            transform: translateY(-50%);
             z-index: 20;
         }
+        
+        /* Hero Section */
         .hero {
             background-color: #FFFFFF;
             height: 100vh;
@@ -105,12 +118,16 @@
             transform: translateY(-3px);
             box-shadow: 0 4px 8px rgba(0,0,0,0.2);
         }
+        
+        /* Divider */
         .divider {
             width: 100%;
             height: 2px;
             background-color: #803c24;
             margin: 20px 0;
         }
+        
+        /* Intro Section */
         .intro {
             display: flex;
             padding: 50px 20px;
@@ -152,6 +169,8 @@
             line-height: 1.5;
             color: #000;
         }
+        
+        /* Idea Section */
         .idea {
             display: flex;
             padding: 50px 20px;
@@ -190,6 +209,8 @@
             line-height: 1.5;
             color: #000;
         }
+        
+        /* Gallery Section */
         .gallery {
             padding: 50px 20px;
             background-color: #F5E8C7;
@@ -222,6 +243,8 @@
         .gallery-image:hover {
             transform: scale(1.05);
         }
+        
+        /* Contact Section */
         .contact {
             display: flex;
             padding: 50px 20px;
@@ -268,6 +291,8 @@
             background-color: #000;
             margin: 5px 0;
         }
+        
+        /* What I Do Section */
         .whatido {
             display: flex;
             padding: 50px 20px;
@@ -333,6 +358,8 @@
             background-color: #000;
             margin: 10px 0;
         }
+        
+        /* Footer */
         footer {
             background-color: #803c24;
             color: #F5E8C7;
@@ -360,62 +387,48 @@
         .footer-copyright {
             padding-right: 20px;
         }
+        
         /* Responsive Design */
         @media (max-width: 900px) {
+            header {
+                height: auto;
+                padding: 10px;
+                flex-direction: row;
+                flex-wrap: wrap;
+            }
+            
+            .hamburger {
+                display: block;
+            }
+            
+            nav {
+                width: 100%;
+                order: 3;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease-out;
+            }
+            
+            nav.active {
+                max-height: 500px;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                background-color: #803c24;
+                width: 100%;
+                padding: 20px 0;
+                align-items: center;
+                gap: 15px;
+            }
+            
             .logo-container {
                 position: static;
                 transform: none;
                 order: 1;
-                width: 100%;
-                text-align: center;
-                margin: 10px 0;
-            }
-            header {
-                flex-direction: column;
-            }
-            nav {
-                width: 100%;
-            }
-            nav ul {
-                justify-content: center;
-            }
-        }
-        @media (max-width: 768px) {
-            .hamburger {
-                display: block;
-                order: 2;
-                margin-left: auto;
-            }
-            nav {
-                width: 100%;
-                max-height: 0;
-                overflow: hidden;
-                transition: max-height 0.3s ease-out;
-                order: 3;
-            }
-            nav.active {
-                max-height: 500px;
-            }
-            nav ul {
-                flex-direction: column;
-                align-items: center;
-                padding: 20px 0;
-            }
-            nav ul li {
-                margin: 10px 0;
-            }
-            .logo-container {
-                order: 1;
                 margin: 10px auto;
             }
-            .logo {
-                margin: 0 auto;
-            }
-            header {
-                flex-direction: row;
-                flex-wrap: wrap;
-                padding: 10px;
-            }
+            
             .hero-text {
                 font-size: 1.8em;
                 padding: 0 20px;
@@ -452,6 +465,7 @@
                 padding: 0;
             }
         }
+        
         @media (max-width: 480px) {
             .gallery-grid {
                 grid-template-columns: 1fr;
@@ -464,8 +478,7 @@
                 height: 83px;
             }
             .logo img {
-                height: 75px;
-                max-width: 240px;
+                height: 80px;
             }
         }
     </style>
@@ -477,9 +490,7 @@
                 <img src="logos.png" alt="Burnt Sienna Logo">
             </div>
         </div>
-        <div class="hamburger" id="hamburger">
-            <i class="fas fa-bars"></i>
-        </div>
+        <i class="fas fa-bars hamburger" id="hamburger"></i>
         <nav id="nav">
             <ul>
                 <li><a href="#home">Home</a></li>
@@ -489,6 +500,7 @@
             </ul>
         </nav>
     </header>
+    
     <section id="home" class="hero">
         <div class="hero-text">
             I'm Jahir, a 21 years old self taught artist<br>based in Goa, India.
@@ -498,7 +510,9 @@
             <a href="#fabric" class="hero-button">Fabric Painting</a>
         </div>
     </section>
+    
     <div class="divider"></div>
+    
     <section class="intro">
         <div class="intro-left">
             <div class="intro-title">Introduction</div>
@@ -513,7 +527,9 @@
             </div>
         </div>
     </section>
+    
     <div class="divider"></div>
+    
     <section class="idea">
         <div class="idea-left">
             <div class="idea-title">The idea behind La Velata</div>
@@ -525,7 +541,9 @@
             <div class="idea-image"></div>
         </div>
     </section>
+    
     <div class="divider"></div>
+    
     <section class="gallery">
         <div class="gallery-title">My work</div>
         <div class="gallery-grid">
@@ -539,7 +557,9 @@
             <div class="gallery-image" style="background-image: url('https://images.unsplash.com/photo-1579783901586-d88db74b4fe4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&h=500&q=80')"></div>
         </div>
     </section>
+    
     <div class="divider"></div>
+    
     <section class="contact">
         <div class="contact-left">
             <div class="contact-title">Contact</div>
@@ -562,7 +582,9 @@
             </div>
         </div>
     </section>
+    
     <div class="divider"></div>
+    
     <section class="whatido">
         <div class="whatido-left">
             <div class="whatido-title">What I do</div>
@@ -595,7 +617,9 @@
             <div class="collapsible-divider"></div>
         </div>
     </section>
+    
     <div class="divider"></div>
+    
     <footer>
         <div class="footer-social">
             <a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
@@ -630,6 +654,7 @@
         // Hamburger menu functionality
         const hamburger = document.getElementById('hamburger');
         const nav = document.getElementById('nav');
+        const navLinks = document.querySelectorAll('nav a');
 
         hamburger.addEventListener('click', function() {
             nav.classList.toggle('active');
@@ -643,10 +668,10 @@
             }
         });
 
-        // Close menu when clicking on a link
-        document.querySelectorAll('nav a').forEach(link => {
+        // Close menu when clicking on a link (for mobile)
+        navLinks.forEach(link => {
             link.addEventListener('click', function() {
-                if (window.innerWidth <= 768) {
+                if (window.innerWidth <= 900) {
                     nav.classList.remove('active');
                     const icon = hamburger.querySelector('i');
                     icon.classList.remove('fa-times');
